@@ -20,7 +20,7 @@ pipeline {
 			steps{
 				script {
 				
-					sh "ansible-playbook /etc/ansible/play1.yml -i hosts -l server"
+					sh "ansible-playbook /var/lib/jenkins/workspace/sample/play1.yml"
 				}
 			}                
 		}
