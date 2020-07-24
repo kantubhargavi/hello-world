@@ -36,10 +36,7 @@ pipeline {
   
                     sshCommand remote: remote, command: "/apache-tomcat-9.0.37/bin/startup.sh"
             
-                    sshCommand remote: remote, command: " cd /home/ec2-user/"
-                    sshCommand remote: remote, command: "sudo mv `ls -rt /home/ec2-user/*.war | tail -1` /home/ec2-user/webapp.war"
-                    sshCommand remote: remote, command: "sudo cp `ls -rt /home/ec2-user/webapp.war | tail -1` /apache-tomcat-9.0.37/webapps/"
-                    sshCommand remote: remote, command: "sudo rm -rf /home/ec2-user/*.war"
+                    
 
                     
 			}
