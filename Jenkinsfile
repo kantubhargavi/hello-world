@@ -20,7 +20,7 @@ pipeline {
 			steps{
 				script {
 				
-					sh "ansible-playbook /var/lib/jenkins/workspace/sample/play1.yml"
+					sh "ansible-playbook /var/lib/jenkins/workspace/sample/play1.yaml"
 				}
 			}                
 		}
