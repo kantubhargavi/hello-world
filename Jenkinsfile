@@ -11,16 +11,10 @@ pipeline {
         }
         stage("build code"){
             steps{
-              sh "mvn clean install"
+              sh "mvn clean install package"
             }
         }
-	 stage("publish to nexus") {
-            steps {
-                script {
-				 nexusArtifactUploader artifacts: [[artifactId: 'maven-project', classifier: '', file: 'target/webapp.war', type: 'war']], credentialsId: 'nexus', groupId: 'com.example.maven-project', nexusUrl: '3.87.139.124:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0-SNAPSHOT'
-                }
-            }
-        }
+	 
         stage('Publishing Artifact')
 			{ 
 			steps{
@@ -30,5 +24,26 @@ pipeline {
 				}
 			}                
 		}
+	 stage("deploying to Tomcat") {
+			steps {
+				script {
+					def remote = [:]
+                    remote.name = 'tomcat2'
+                    remote.host = '3.84.73.92'
+                    remote.user = 'ec2-user'
+                    remote.password = 'Srinivyas@31'
+                    remote.allowAnyHosts = true
+  
+                    sshCommand remote: remote, command: "/apache-tomcat-9.0.37/bin/startup.sh"
+            
+                    sshCommand remote: remote, command: " cd /home/ec2-user/"
+                    sshCommand remote: remote, command: "sudo mv `ls -rt /home/ec2-user/*.war | tail -1` /home/ec2-user/webapp.war"
+                    sshCommand remote: remote, command: "sudo cp `ls -rt /home/ec2-user/webapp.war | tail -1` /apache-tomcat-9.0.37/webapps/"
+                    sshCommand remote: remote, command: "sudo rm -rf /home/ec2-user/*.war"
+
+                    
+			}
+		}
+     }   
     }
 }
