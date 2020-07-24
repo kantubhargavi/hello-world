@@ -14,13 +14,14 @@ pipeline {
               sh "mvn clean install"
             }
         }
-        stage("deploy"){
-            steps{
-              sshagent(['deploy']) {
-                 sh "scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@52.91.84.134:/apache-tomcat-9.0.37/webapps"
-                 
-                }
-            }
-        }
+        stage('Publishing Artifact')
+			{ 
+			steps{
+				script {
+				
+					sh "ansible-playbook /etc/ansible/play1.yml"
+				}
+			}                
+		}
     }
 }
