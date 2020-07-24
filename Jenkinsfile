@@ -19,7 +19,7 @@ pipeline {
 			steps{
 				script {
 				
-					sh "ansible-playbook /etc/ansible/play1.yml"
+					sh "ansible-playbook /etc/ansible/play1.yml -i hosts -l server"
 				}
 			}                
 		}
