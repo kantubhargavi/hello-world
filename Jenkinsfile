@@ -34,7 +34,7 @@ pipeline {
                     remote.password = 'Srinivyas@31'
                     remote.allowAnyHosts = true
   
-                    sshCommand remote: remote, command: "/apache-tomcat-9.0.37/bin/startup.sh"
+                    sshCommand remote: remote, command: "bash /apache-tomcat-9.0.37/bin/startup.sh"
             
                     
 
