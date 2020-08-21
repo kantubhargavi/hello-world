@@ -15,14 +15,7 @@ pipeline {
             }
         }
 	    
-	 stage("publish to nexus") {
-            steps {
-                script {
-			nexusArtifactUploader artifacts: [[artifactId: 'maven-project', classifier: '', file: '/var/lib/jenkins/workspace/sample/webapp/target/webapp.war', type: 'war']], credentialsId: 'oooo', groupId: 'com.example.maven-project', nexusUrl: '3.80.165.251:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0-SNAPSHOT'
-                }
-            }
-        }
-	 
+	
         stage('Publishing Artifact')
 			{ 
 			steps{
@@ -37,7 +30,7 @@ pipeline {
 				script {
 					def remote = [:]
                     remote.name = 'tomcat2'
-                    remote.host = '3.84.73.92'
+                    remote.host = '34.207.177.101'
                     remote.user = 'ec2-user'
                     remote.password = 'Srinivyas@31'
                     remote.allowAnyHosts = true
