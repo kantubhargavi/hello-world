@@ -1,5 +1,5 @@
-<h1> Welcome to chatur </h1>
-<h2> Steup and deploy using ansible </h2>
+<h1> Welcome to formac </h1>
+<h2> Setup and deploy using ansible </h2>
 
 
 
