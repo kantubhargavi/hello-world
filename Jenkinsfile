@@ -30,7 +30,7 @@ pipeline {
 				script {
 					def remote = [:]
                     remote.name = 'tomcat2'
-                    remote.host = '3.81.20.161'
+                    remote.host = '34.239.141.197'
                     remote.user = 'ec2-user'
                     remote.password = 'Srinivyas@31'
                     remote.allowAnyHosts = true
