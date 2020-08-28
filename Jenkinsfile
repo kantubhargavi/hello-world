@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage("clone code"){
             steps{
-               git credentialsId: 'git_credentials', url: 'https://github.com/chaturkurma/hello-world.git'
+               git credentialsId: 'git_credentials', url: 'https://github.com/kantubhargavi/hello-world.git'
             }
         }
         stage("build code"){
@@ -30,7 +30,7 @@ pipeline {
 				script {
 					def remote = [:]
                     remote.name = 'tomcat2'
-                    remote.host = '34.207.177.101'
+                    remote.host = '3.81.20.161'
                     remote.user = 'ec2-user'
                     remote.password = 'Srinivyas@31'
                     remote.allowAnyHosts = true
