@@ -1,0 +1,10 @@
+---
+- hosts: server
+  become: true
+  become_method: sudo       # Set become method
+  remote_user: ec2-user
+  tasks:
+    - name: copy war into tomcat server
+      copy:
+        src:  /var/lib/jenkins/workspace/sample/webapp/target/webapp.war
+        dest: /apache-tomcat-9.0.37/webapps/
